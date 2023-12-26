@@ -27,6 +27,8 @@ spring:
     database: mysql
   liquibase:
     enabled: true
-    change-log: classpath:db/master.xml
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    liquibase-schema: TaskFlow
 
 
