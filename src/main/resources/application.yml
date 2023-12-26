@@ -26,5 +26,7 @@ spring:
         format_sql: true
     database: mysql
   liquibase:
-    enabled: false
-    change-log: db/master.xml
+    enabled: true
+    change-log: classpath:db/master.xml
+
+
