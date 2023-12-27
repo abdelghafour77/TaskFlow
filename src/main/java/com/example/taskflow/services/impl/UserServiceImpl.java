@@ -29,13 +29,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User createUser(String user) {
+    public User createUser(User user) {
 //        TODO: Implement this method
         return null;
     }
 
     @Override
-    public User updateUser(Long id, String user) {
+    public User updateUser(Long id, User user) {
 //        TODO: Implement this method
         return null;
     }
