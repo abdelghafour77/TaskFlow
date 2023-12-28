@@ -1,6 +1,36 @@
 databaseChangeLog:
   - changeSet:
-      id: 1703625744995-1
+      id: 1703777501656-1
+      author: Youcode (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk__user
+                  name: id
+                  type: INT
+              - column:
+                  name: firstname
+                  type: VARCHAR(255)
+              - column:
+                  name: lastname
+                  type: VARCHAR(255)
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+              - column:
+                  name: password
+                  type: VARCHAR(255)
+              - column:
+                  name: role
+                  type: VARCHAR(255)
+            tableName: _user
+  - changeSet:
+      id: 1703777501656-2
       author: Youcode (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -21,7 +51,7 @@ databaseChangeLog:
                   type: VARCHAR(255)
             tableName: tag
   - changeSet:
-      id: 1703625744995-2
+      id: 1703777501656-3
       author: Youcode (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -31,7 +61,7 @@ databaseChangeLog:
                   constraints:
                     nullable: false
                     primaryKey: true
-                    primaryKeyName: pk_task
+                    primaryKeyName: pk_tasks
                   name: id
                   type: BIGINT
               - column:
@@ -42,10 +72,10 @@ databaseChangeLog:
                   type: VARCHAR(255)
               - column:
                   name: status
-                  type: VARCHAR(255)
+                  type: SMALLINT
               - column:
                   name: priority
-                  type: VARCHAR(255)
+                  type: SMALLINT
               - column:
                   name: due_date
                   type: VARCHAR(255)
@@ -56,14 +86,16 @@ databaseChangeLog:
                   name: completed_by
                   type: VARCHAR(255)
               - column:
+                  constraints:
+                    nullable: false
                   name: created_by
-                  type: VARCHAR(255)
+                  type: INT
               - column:
                   name: assigned_to
                   type: VARCHAR(255)
-            tableName: task
+            tableName: tasks
   - changeSet:
-      id: 1703625744995-3
+      id: 1703777501656-4
       author: Youcode (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -79,9 +111,9 @@ databaseChangeLog:
                     nullable: false
                   name: tags_id
                   type: BIGINT
-            tableName: task_tags
+            tableName: tasks_tags
   - changeSet:
-      id: 1703625744995-4
+      id: 1703777501656-5
       author: Youcode (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -91,42 +123,69 @@ databaseChangeLog:
                   constraints:
                     nullable: false
                     primaryKey: true
-                    primaryKeyName: pk_users
+                    primaryKeyName: pk_token
                   name: id
-                  type: BIGINT
+                  type: INT
               - column:
-                  name: name
+                  name: token
                   type: VARCHAR(255)
               - column:
-                  name: email
+                  name: token_type
                   type: VARCHAR(255)
               - column:
-                  name: password
-                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+                  name: revoked
+                  type: BOOLEAN
               - column:
-                  name: role
-                  type: VARCHAR(255)
-            tableName: users
+                  constraints:
+                    nullable: false
+                  name: expired
+                  type: BOOLEAN
+              - column:
+                  name: user_id
+                  type: INT
+            tableName: token
   - changeSet:
-      id: 1703625744995-5
+      id: 1703777501656-6
+      author: Youcode (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: token
+            constraintName: uc_token_token
+            tableName: token
+  - changeSet:
+      id: 1703777501656-7
+      author: Youcode (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: token
+            constraintName: FK_TOKEN_ON_USER
+            referencedColumnNames: id
+            referencedTableName: _user
+  - changeSet:
+      id: 1703777501656-8
       author: Youcode (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
         - addForeignKeyConstraint:
             baseColumnNames: tags_id
-            baseTableName: task_tags
-            constraintName: fk_task_tags_on_tag
+            baseTableName: tasks_tags
+            constraintName: fk_tastag_on_tag
             referencedColumnNames: id
             referencedTableName: tag
   - changeSet:
-      id: 1703625744995-6
+      id: 1703777501656-9
       author: Youcode (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
         - addForeignKeyConstraint:
             baseColumnNames: task_id
-            baseTableName: task_tags
-            constraintName: fk_task_tags_on_task
+            baseTableName: tasks_tags
+            constraintName: fk_tastag_on_task
             referencedColumnNames: id
-            referencedTableName: task
+            referencedTableName: tasks
 

@@ -2,10 +2,7 @@ package com.example.taskflow.entities;
 
 import com.example.taskflow.entities.enums.TaskPriority;
 import com.example.taskflow.entities.enums.TaskStatus;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
@@ -16,6 +13,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "tasks")
 public class Task {
 
     @Id
