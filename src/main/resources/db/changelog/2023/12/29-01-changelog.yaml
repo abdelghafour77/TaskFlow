@@ -1,42 +1,13 @@
 databaseChangeLog:
   - changeSet:
-      id: 1703777501656-1
+      id: 1703838699229-1
       author: Youcode (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
         - createTable:
             columns:
               - column:
-                  constraints:
-                    nullable: false
-                    primaryKey: true
-                    primaryKeyName: pk__user
-                  name: id
-                  type: INT
-              - column:
-                  name: firstname
-                  type: VARCHAR(255)
-              - column:
-                  name: lastname
-                  type: VARCHAR(255)
-              - column:
-                  name: email
-                  type: VARCHAR(255)
-              - column:
-                  name: password
-                  type: VARCHAR(255)
-              - column:
-                  name: role
-                  type: VARCHAR(255)
-            tableName: _user
-  - changeSet:
-      id: 1703777501656-2
-      author: Youcode (generated)
-      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
-      changes:
-        - createTable:
-            columns:
-              - column:
+                  autoIncrement: true
                   constraints:
                     nullable: false
                     primaryKey: true
@@ -51,13 +22,14 @@ databaseChangeLog:
                   type: VARCHAR(255)
             tableName: tag
   - changeSet:
-      id: 1703777501656-3
+      id: 1703838699229-2
       author: Youcode (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
         - createTable:
             columns:
               - column:
+                  autoIncrement: true
                   constraints:
                     nullable: false
                     primaryKey: true
@@ -95,7 +67,7 @@ databaseChangeLog:
                   type: VARCHAR(255)
             tableName: tasks
   - changeSet:
-      id: 1703777501656-4
+      id: 1703838699229-3
       author: Youcode (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -113,13 +85,14 @@ databaseChangeLog:
                   type: BIGINT
             tableName: tasks_tags
   - changeSet:
-      id: 1703777501656-5
+      id: 1703838699229-4
       author: Youcode (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
         - createTable:
             columns:
               - column:
+                  autoIncrement: true
                   constraints:
                     nullable: false
                     primaryKey: true
@@ -147,7 +120,38 @@ databaseChangeLog:
                   type: INT
             tableName: token
   - changeSet:
-      id: 1703777501656-6
+      id: 1703838699229-5
+      author: Youcode (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_user
+                  name: id
+                  type: INT
+              - column:
+                  name: firstname
+                  type: VARCHAR(255)
+              - column:
+                  name: lastname
+                  type: VARCHAR(255)
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+              - column:
+                  name: password
+                  type: VARCHAR(255)
+              - column:
+                  name: role
+                  type: VARCHAR(255)
+            tableName: user
+  - changeSet:
+      id: 1703838699229-6
       author: Youcode (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -156,7 +160,7 @@ databaseChangeLog:
             constraintName: uc_token_token
             tableName: token
   - changeSet:
-      id: 1703777501656-7
+      id: 1703838699229-7
       author: Youcode (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -165,9 +169,9 @@ databaseChangeLog:
             baseTableName: token
             constraintName: FK_TOKEN_ON_USER
             referencedColumnNames: id
-            referencedTableName: _user
+            referencedTableName: user
   - changeSet:
-      id: 1703777501656-8
+      id: 1703838699229-8
       author: Youcode (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -178,7 +182,7 @@ databaseChangeLog:
             referencedColumnNames: id
             referencedTableName: tag
   - changeSet:
-      id: 1703777501656-9
+      id: 1703838699229-9
       author: Youcode (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
