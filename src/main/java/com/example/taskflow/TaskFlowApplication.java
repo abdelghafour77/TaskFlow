@@ -12,11 +12,11 @@ import static com.example.taskflow.entities.enums.Role.*;
 
 @SpringBootApplication
 @EnableJpaAuditing(auditorAwareRef = "auditorAware")
-public class SecurityApplication {
+public class TaskFlowApplication {
 
 
     public static void main(String[] args) {
-        SpringApplication.run(SecurityApplication.class, args);
+        SpringApplication.run(TaskFlowApplication.class, args);
     }
 
     @Bean
