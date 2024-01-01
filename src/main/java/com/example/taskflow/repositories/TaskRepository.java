@@ -13,4 +13,6 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     @Query("SELECT t FROM Task t WHERE t.assignedTo.email = ?1")
     public List<Task> findAllByEmail(String email);
 
+    public boolean existsByName(String name);
+
 }

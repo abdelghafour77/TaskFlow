@@ -1,9 +1,11 @@
 package com.example.taskflow.controllers;
 
+import com.example.taskflow.dto.requests.TaskRequest;
 import com.example.taskflow.dto.responses.TaskResponse;
 import com.example.taskflow.entities.Task;
 import com.example.taskflow.services.TaskService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,14 +31,14 @@ public class TaskController {
         return ResponseEntity.ok().body(taskService.getTaskById(id));
     }
 
-    @PostMapping("")
-    public ResponseEntity<Task> createTask(Task task) {
-        return ResponseEntity.ok().body(taskService.createTask(task));
+    @PostMapping("/")
+    public ResponseEntity<TaskResponse> createTask(@Valid @RequestBody TaskRequest taskRequest) {
+        return ResponseEntity.ok().body(taskService.createTask(taskRequest));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Task> updateTask(@PathVariable Long id,@RequestBody Task task) {
-        return ResponseEntity.ok().body(taskService.updateTask(id, task));
+    public ResponseEntity<TaskResponse> updateTask(@PathVariable Long id,@RequestBody TaskRequest taskRequest) {
+        return ResponseEntity.ok().body(taskService.updateTask(id, taskRequest));
     }
 
     @DeleteMapping("/{id}")
