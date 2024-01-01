@@ -4,6 +4,7 @@ import com.example.taskflow.entities.enums.Role;
 import com.example.taskflow.token.Token;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,8 +26,13 @@ public class User  implements UserDetails {
     private Integer id;
     private String firstname;
     private String lastname;
+    @Column(unique = true)
     private String email;
     private String password;
+    @Column(nullable = false)
+    private int changeCard;
+    @Column(nullable = false)
+    private int deleteCard;
 
     @Enumerated(EnumType.STRING)
     private Role role;

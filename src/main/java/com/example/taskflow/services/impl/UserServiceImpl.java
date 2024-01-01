@@ -5,11 +5,13 @@ import com.example.taskflow.entities.User;
 import com.example.taskflow.repositories.UserRepository;
 import com.example.taskflow.services.UserService;
 import lombok.AllArgsConstructor;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -43,5 +45,30 @@ public class UserServiceImpl  implements UserService {
     @Override
     public User getUserByEmail(String email) {
         return repository.findByEmail(email).orElseThrow();
+    }
+
+    @Scheduled(cron = "${application.schedule.refresh.test-cron}")
+    public void test() {
+        System.out.println("test schedule");
+    }
+
+    @Scheduled(cron = "${application.schedule.refresh.change-cron}")
+    public void resetChangeCard() {
+        System.out.println("resetChangeCard");
+        List<User> users=repository.findAll();
+        for(User user:users){
+            user.setChangeCard(0);
+            repository.save(user);
+        }
+    }
+
+    @Scheduled(cron = "${application.schedule.refresh.delete-cron}")
+    public void resetDeleteCard() {
+        System.out.println("resetDeleteCard");
+        List<User> users=repository.findAll();
+        for(User user:users){
+            user.setDeleteCard(0);
+            repository.save(user);
+        }
     }
 }

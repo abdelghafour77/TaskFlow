@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: 1704128510061-1
+      id: 1704142803496-1
       author: Youcode (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -22,7 +22,7 @@ databaseChangeLog:
                   type: VARCHAR(255)
             tableName: tag
   - changeSet:
-      id: 1704128510061-2
+      id: 1704142803496-2
       author: Youcode (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -62,7 +62,7 @@ databaseChangeLog:
                   type: INT
             tableName: tasks
   - changeSet:
-      id: 1704128510061-3
+      id: 1704142803496-3
       author: Youcode (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -80,7 +80,7 @@ databaseChangeLog:
                   type: BIGINT
             tableName: tasks_tags
   - changeSet:
-      id: 1704128510061-4
+      id: 1704142803496-4
       author: Youcode (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -115,7 +115,7 @@ databaseChangeLog:
                   type: INT
             tableName: token
   - changeSet:
-      id: 1704128510061-5
+      id: 1704142803496-5
       author: Youcode (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -142,11 +142,21 @@ databaseChangeLog:
                   name: password
                   type: VARCHAR(255)
               - column:
+                  constraints:
+                    nullable: false
+                  name: change_card
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: delete_card
+                  type: INT
+              - column:
                   name: role
                   type: VARCHAR(255)
             tableName: user
   - changeSet:
-      id: 1704128510061-6
+      id: 1704142803496-6
       author: Youcode (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -155,7 +165,16 @@ databaseChangeLog:
             constraintName: uc_token_token
             tableName: token
   - changeSet:
-      id: 1704128510061-7
+      id: 1704142803496-7
+      author: Youcode (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: email
+            constraintName: uc_user_email
+            tableName: user
+  - changeSet:
+      id: 1704142803496-8
       author: Youcode (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -166,7 +185,7 @@ databaseChangeLog:
             referencedColumnNames: id
             referencedTableName: user
   - changeSet:
-      id: 1704128510061-8
+      id: 1704142803496-9
       author: Youcode (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -177,7 +196,7 @@ databaseChangeLog:
             referencedColumnNames: id
             referencedTableName: user
   - changeSet:
-      id: 1704128510061-9
+      id: 1704142803496-10
       author: Youcode (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -188,7 +207,7 @@ databaseChangeLog:
             referencedColumnNames: id
             referencedTableName: user
   - changeSet:
-      id: 1704128510061-10
+      id: 1704142803496-11
       author: Youcode (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
@@ -199,7 +218,7 @@ databaseChangeLog:
             referencedColumnNames: id
             referencedTableName: tag
   - changeSet:
-      id: 1704128510061-11
+      id: 1704142803496-12
       author: Youcode (generated)
       objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
       changes:
