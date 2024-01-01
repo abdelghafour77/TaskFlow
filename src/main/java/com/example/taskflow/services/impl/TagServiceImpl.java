@@ -49,4 +49,9 @@ public class TagServiceImpl implements TagService {
     public Boolean existsByName(String name) {
         return tagRepository.existsByName(name);
     }
+
+    @Override
+    public Tag getTagByName(String name) {
+        return tagRepository.findByName(name);
+    }
 }

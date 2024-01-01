@@ -12,6 +12,8 @@ public interface TagService {
 
     TagResponse getTagById(Long id);
 
+    Tag getTagByName(String name);
+
     Boolean existsByName(String name);
 
     TagResponse createTag(TagRequest tagRequest);
