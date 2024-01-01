@@ -15,8 +15,7 @@ import org.springframework.security.web.authentication.logout.LogoutHandler;
 
 
 import static com.example.taskflow.entities.enums.Permission.*;
-import static com.example.taskflow.entities.enums.Role.ADMIN;
-import static com.example.taskflow.entities.enums.Role.MANAGER;
+import static com.example.taskflow.entities.enums.Role.*;
 import static org.springframework.http.HttpMethod.*;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
@@ -26,7 +25,11 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 @EnableMethodSecurity
 public class SecurityConfiguration {
 
-    private static final String[] WHITE_LIST_URL = {"/api/v1/auth/**",
+    private static final String[] WHITE_LIST_URL = {
+            "/api/v1/auth/**",
+//            "/api/v1/tags/**",
+//            "/api/v1/tasks/**",
+//            "/api/v1/users/**",
             "/v2/api-docs",
             "/v3/api-docs",
             "/v3/api-docs/**",
@@ -49,11 +52,15 @@ public class SecurityConfiguration {
                         req.requestMatchers(WHITE_LIST_URL)
                                 .permitAll()
                                 .requestMatchers("/api/v1/auth/**").permitAll()
-//                                .requestMatchers("/api/v1/management/**").hasAnyRole(ADMIN.name(), MANAGER.name())
-//                                .requestMatchers(GET, "/api/v1/management/**").hasAnyAuthority(ADMIN_READ.name(), MANAGER_READ.name())
-//                                .requestMatchers(POST, "/api/v1/management/**").hasAnyAuthority(ADMIN_CREATE.name(), MANAGER_CREATE.name())
-//                                .requestMatchers(PUT, "/api/v1/management/**").hasAnyAuthority(ADMIN_UPDATE.name(), MANAGER_UPDATE.name())
-//                                .requestMatchers(DELETE, "/api/v1/management/**").hasAnyAuthority(ADMIN_DELETE.name(), MANAGER_DELETE.name())
+                                .requestMatchers("/api/v1/users/**").permitAll()
+                                .requestMatchers( GET,"/api/v1/tags/**").hasAnyAuthority(ADMIN_READ.getPermission())
+                                .requestMatchers(POST, "/api/v1/tags/").hasAnyAuthority(ADMIN_CREATE.getPermission())
+                                .requestMatchers(PUT, "/api/v1/tags/").hasAnyAuthority(ADMIN_UPDATE.getPermission())
+                                .requestMatchers(DELETE, "/api/v1/tags/**").hasAnyAuthority(ADMIN_DELETE.getPermission())
+                                .requestMatchers(GET,"/api/v1/tasks/**").hasAnyAuthority(ADMIN_READ.getPermission(), USER_READ.getPermission())
+                                .requestMatchers(POST, "/api/v1/tasks/").hasAnyAuthority(ADMIN_CREATE.getPermission(), USER_CREATE.getPermission())
+                                .requestMatchers(PUT, "/api/v1/tasks/**").hasAnyAuthority(ADMIN_UPDATE.getPermission(), USER_UPDATE.getPermission())
+                                .requestMatchers(DELETE, "/api/v1/tasks/**").hasAnyAuthority(ADMIN_DELETE.getPermission(), USER_DELETE.getPermission())
                                 .anyRequest()
                                 .authenticated()
                 )
