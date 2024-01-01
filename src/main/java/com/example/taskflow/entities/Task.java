@@ -25,9 +25,13 @@ public class Task {
     private TaskPriority priority;
     private String dueDate;
     private String completedDate;
-    private String completedBy;
-    private int createdBy;
-    private String assignedTo;
+
+
+    @ManyToOne
+    private User createdBy;
+
+    @ManyToOne
+    private User assignedTo;
 
     @ManyToMany
     private List<Tag> tags;
